@@ -1,0 +1,25 @@
+# Created by PhpStorm
+# File: config
+# Author: Maks Babenko <mbabenko21@gmail.com>
+# Date: 08.05.14 - 13:18
+system:
+  version: "0.0.1-dev"
+  author: "Maks Babenko <mbabenko21@gmail.com>"
+  app_name: "Амулет дракона 2"
+
+game:
+  items_per_page: 5
+  life_per_second: 2
+  mana_per_second: 2
+
+view:
+  engine: "smarty"
+  type: "xhtml"
+  ext: ".tpl"
+
+smarty:
+  templates_dir: "{const:APP_DIR}/views"
+  cache_dir: "{const:RES_DIR}/cache"
+  compile_dir: "{const:RES_DIR}/compile"
+  config_dir: "{const:APP_DIR}/config_s"
+

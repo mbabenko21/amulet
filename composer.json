@@ -1,0 +1,28 @@
+{
+    "name": "babenoff/amulet",
+    "description": "Text Online Game for mobiles",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maksim",
+            "email": "mbabenko21@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "symfony/config": "2.5.*@dev",
+        "symfony/routing": "2.5.*@dev",
+        "gabordemooij/redbean": "dev-RedBeanPHP3_5_X",
+        "symfony/dependency-injection": "2.3.*@dev",
+        "symfony/yaml": "2.4.x-dev",
+        "symfony/http-foundation": "2.4.x-dev",
+        "smarty/smarty": "v3.1.17"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Amulet\\": "src/Amulet/",
+            "AmuletOfDragon\\Controller\\": "app/controllers/"
+        }
+    }
+}

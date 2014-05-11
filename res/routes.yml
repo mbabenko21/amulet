@@ -1,0 +1,12 @@
+# Created by PhpStorm
+# File: routes
+# Author: Maks Babenko <mbabenko21@gmail.com>
+# Date: 11.05.14 - 18:19
+
+home:
+  path: "/"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\HomeController::indexAction" }
+
+#test_action:
+#  path: "/user/{id}"
+#  defaults: { _controller: "AmuletOfDragon\\Controller\\HomeController::testAction"}
