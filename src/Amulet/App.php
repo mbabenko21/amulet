@@ -2,9 +2,17 @@
 namespace Amulet;
 
 use Amulet\Factory\Config\AbstractConfig;
+use Amulet\Factory\Config\AnnotationsFactory;
+use Amulet\Factory\Config\DoctrineConfig;
 use Amulet\Factory\ViewFactory;
 use Amulet\Helper\StrHelper;
 use Amulet\Loader\YAML\ConfigYamlLoader;
+use Doctrine\Common\Persistence\Mapping\Driver\FileDriver;
+use Doctrine\DBAL\Configuration;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver;
+use Doctrine\ORM\Mapping\Driver\YamlDriver;
+use Doctrine\ORM\Tools\Setup;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -25,9 +33,10 @@ class App
 
     /**
      * Запуск движка игры
+     * @param bool $console
      * @return void
      */
-    public function run()
+    public function run($console = false)
     {
     	$this->setContainer();
         $configLoader = new ConfigYamlLoader($this->locators["res_locator"]);
@@ -35,8 +44,11 @@ class App
         $this->container->set("config_loader", $configLoader);
         $view = ViewFactory::factory($configLoader->get("view")->getEngine());
         $this->container->set("view", $view);
-
-        $this->_routing();
+        $this->_database();
+        if($console == false)
+        {
+            $this->_routing();
+        }
     }
 
     /**
@@ -96,12 +108,16 @@ class App
         return $this;
     }
 
+    /**
+     * Routing
+     * @return $this
+     */
     private function _routing()
     {
         $locator = $this->locators["res_locator"];
         $loader = new \Symfony\Component\Routing\Loader\YamlFileLoader($locator);
         $router = new Router($loader, "routes.yml");
-
+        $this->container->set("router", $router);
         $matchRequest = $router->matchRequest(Request::createFromGlobals());
         $controllerData = $matchRequest["_controller"];
         $controller = StrHelper::parseClassAction($controllerData);
@@ -122,6 +138,40 @@ class App
                 );
             }
         }
+        return $this;
+    }
+
+    /**
+     * Database
+     * @return $this
+     */
+    private function _database()
+    {
+        $configuration = new Configuration();
+        /** @var $doctrineConfig DoctrineConfig */
+        $doctrineConfig = $this->configFactory("doctrine");
+        /** @var $annotations AnnotationsFactory */
+        $annotations = $this->configFactory($doctrineConfig->getAnnotations());
+        $config = Setup::createAnnotationMetadataConfiguration(
+            [$annotations->getDir()],
+            $doctrineConfig->getIsDevMode()
+       );
+        $config->setProxyDir($doctrineConfig->getProxyDir());
+
+        $driverClass = $doctrineConfig->getDriver();
+        /** @var $driver FileDriver */
+        $driver = new $driverClass(
+            $annotations->getDir(),
+            $annotations->getExt()
+        );
+
+        $config->setMetadataDriverImpl($driver);
+
+        $doctrineFactory = $doctrineConfig->getFactory();
+        $conn = $this->configFactory($doctrineFactory)->export();
+        $em = EntityManager::create($conn, $config);
+
+        $this->container->set("entity_manager", $em);
         return $this;
     }
 

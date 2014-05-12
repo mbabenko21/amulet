@@ -11,6 +11,7 @@ namespace AmuletOfDragon\Controller;
 use Amulet\Controller;
 
 /**
+ *
  * Class HomeController
  * @package AmuletOfDragon\Controller
  */
@@ -25,4 +26,5 @@ class HomeController extends Controller {
     {
         $this->json(["id" => $id]);
     }
+
 } 

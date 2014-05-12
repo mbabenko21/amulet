@@ -8,7 +8,13 @@
 </head>
 <body>
     <div class="container">
+        {block name="header"}
+
+        {/block}
         {block name="content"}{/block}
+        {block name="footer"}
+
+        {/block}
     </div>
 </body>
 </html>

@@ -10,8 +10,8 @@ require ROOT_DIR."/vendor/autoload.php";
 \Amulet\App::init()->setLocators(
     [
         "res_locator" => new \Symfony\Component\Config\FileLocator(RES_DIR),
-        "data_locator" => new \Symfony\Component\Config\FileLocator(DATA_DIR)
+        "data_locator" => new \Symfony\Component\Config\FileLocator(DATA_DIR),
+        "entity_locator" => new \Symfony\Component\Config\FileLocator(DATA_DIR."/annotations")
     ]
 );
 
-\Amulet\App::init()->run();

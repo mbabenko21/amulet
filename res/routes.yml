@@ -7,6 +7,14 @@ home:
   path: "/"
   defaults: { _controller: "AmuletOfDragon\\Controller\\HomeController::indexAction" }
 
-#test_action:
-#  path: "/user/{id}"
-#  defaults: { _controller: "AmuletOfDragon\\Controller\\HomeController::testAction"}
+login:
+  path: "/login{ext}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\AuthController::loginAction", ext: ".html"}
+  requirements:
+    ext: ".html|.php"
+
+test_action:
+  path: "/user/{id}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\HomeController::testAction"}
+  requirements:
+    ext: ".html|.php"

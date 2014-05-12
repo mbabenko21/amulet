@@ -6,3 +6,4 @@
  */
 
 require __DIR__."/../bootstrap.php";
+\Amulet\App::init()->run();

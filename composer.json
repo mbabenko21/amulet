@@ -16,12 +16,15 @@
         "symfony/dependency-injection": "2.3.*@dev",
         "symfony/yaml": "2.4.x-dev",
         "symfony/http-foundation": "2.4.x-dev",
-        "smarty/smarty": "v3.1.17"
+        "smarty/smarty": "v3.1.17",
+        "doctrine/orm": "2.5.x-dev"
     },
 
     "autoload": {
         "psr-4": {
             "Amulet\\": "src/Amulet/",
+            "Amulet\\Service\\": "src/amulet_services/Amulet/Service/",
+            "Amulet\\Entity\\": "src/amulet_entity/Amulet/Entity/",
             "AmuletOfDragon\\Controller\\": "app/controllers/"
         }
     }

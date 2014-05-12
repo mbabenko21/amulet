@@ -10,7 +10,10 @@ namespace Amulet;
 
 use Amulet\Service\ViewService;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Router;
 
 class Controller {
     /** @var  ContainerBuilder */
@@ -19,6 +22,8 @@ class Controller {
     protected $view;
     /** @var  Response */
     protected $response;
+    /** @var  Router */
+    protected $router;
 
     public function __construct()
     {
@@ -48,6 +53,25 @@ class Controller {
     {
         $this->view->render($template, $data);
     }
+
+    /**
+     *
+     * @param $url
+     * @param int $status
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function redirect($url, $status = 302)
+    {
+        header(sprintf(
+            "Location: %s",
+            $url
+        ));
+    }
+
+    public function generateUrl($routeId, $parameters = [], $refType = Router::ABSOLUTE_PATH)
+    {
+        return $this->router->generate($routeId, $parameters, $refType);
+    }
     /**
      * @param string $id
      * @return object
@@ -62,5 +86,6 @@ class Controller {
         $this->container = App::init()->getContainer();
         $this->view = $this->container->get("view");
         $this->response = new Response();
+        $this->router = $this->container->get("router");
     }
 } 

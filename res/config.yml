@@ -6,6 +6,7 @@ system:
   version: "0.0.1-dev"
   author: "Maks Babenko <mbabenko21@gmail.com>"
   app_name: "Амулет дракона 2"
+  env: "development"
 
 game:
   items_per_page: 5
@@ -14,9 +15,28 @@ game:
 
 view:
   engine: "smarty"
-  type: "xhtml"
+  type: "html5" #html5|xhtml
   ext: ".tpl"
 
+doctrine:
+  factory: "sqlite"
+  annotations: "annotations_yaml"
+  is_dev_mode: true
+  proxy_dir: "{const:RES_DIR}/proxy/doctrine"
+  driver: "Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver"
+
+annotations_annotations:
+  dir: "{const:ROOT_DIR}/src/amulet_entity/Amulet/Entity"
+  ext: ".php"
+
+annotations_yaml:
+  dir: "{const:DATA_DIR}/annotations/"
+  ext: ".yml"
+#doctrine_sqlite
+sqlite:
+  driver: "pdo_sqlite"
+  path: "{const:DATA_DIR}/db.sqlite"
+#smarty
 smarty:
   templates_dir: "{const:APP_DIR}/views"
   cache_dir: "{const:RES_DIR}/cache"

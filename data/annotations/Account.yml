@@ -1,0 +1,20 @@
+# Created by PhpStorm
+# File: account
+# Author: Maks Babenko <mbabenko21@gmail.com>
+# Date: 11.05.14 - 22:28
+
+Amulet\Entity\Account:
+  type: entity
+  table: accounts
+  id:
+      id:
+        type: integer
+        generator:
+          strategy: AUTO
+  fields:
+      username:
+        type: string
+        length: 50
+      password:
+        type: string
+        length: 50

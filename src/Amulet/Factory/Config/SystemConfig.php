@@ -15,6 +15,7 @@ namespace Amulet\Factory\Config;
  * @property string app_name
  * @property string author
  * @property string version
+ * @property string env
  */
 class SystemConfig extends AbstractConfig {
 
@@ -40,5 +41,13 @@ class SystemConfig extends AbstractConfig {
     public function getVersion()
     {
         return $this->version;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEnv()
+    {
+        return $this->env;
     }
 }
