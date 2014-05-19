@@ -64,10 +64,10 @@ class CharOptions extends \Amulet\Entity\Options\CharOptions implements \Doctrin
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'id', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'life', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'max_life', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'energy', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'max_energy', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'level', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'experience', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'need_experience', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'is_ghost', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'location', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'last_action', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'timers', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'journal', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'town_location', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'last_life_regen_time', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'last_energy_regen_time', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'gps_loc');
+            return array('__isInitialized__', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'id', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'life', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'max_life', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'energy', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'max_energy', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'level', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'experience', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'need_experience', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'is_ghost', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'location', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'last_action', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'timers', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'journal', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'town_location', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'last_life_regen_time', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'last_energy_regen_time');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'id', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'life', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'max_life', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'energy', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'max_energy', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'level', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'experience', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'need_experience', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'is_ghost', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'location', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'last_action', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'timers', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'journal', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'town_location', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'last_life_regen_time', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'last_energy_regen_time', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'gps_loc');
+        return array('__isInitialized__', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'id', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'life', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'max_life', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'energy', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'max_energy', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'level', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'experience', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'need_experience', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'is_ghost', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'location', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'last_action', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'timers', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'journal', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'town_location', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'last_life_regen_time', '' . "\0" . 'Amulet\\Entity\\Options\\CharOptions' . "\0" . 'last_energy_regen_time');
     }
 
     /**
@@ -516,28 +516,6 @@ class CharOptions extends \Amulet\Entity\Options\CharOptions implements \Doctrin
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastEnergyRegenTime', array());
 
         return parent::getLastEnergyRegenTime();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setGpsLoc($gpsLoc)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGpsLoc', array($gpsLoc));
-
-        return parent::setGpsLoc($gpsLoc);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getGpsLoc()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGpsLoc', array());
-
-        return parent::getGpsLoc();
     }
 
 }

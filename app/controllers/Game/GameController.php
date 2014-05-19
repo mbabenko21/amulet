@@ -50,6 +50,21 @@ class GameController extends InGameController
         $doors = $this->mapService->getDoors();
         $locIdData = $this->mapService->getLocIdData();
         $mapData = $this->mapService->getMapData();
+        $gps = $this->request->get("gps", null);
+        if (!is_null($gps)) {
+            $currLoc = $this->player->getCharOptions()->getLocation();
+            $currLoc = explode(".", $currLoc);
+            $id = implode(".", [$currLoc[0], $gps["x"], $gps["y"]]);
+            if ($this->mapService->exists($id) === true) {
+                $this->player->getCharOptions()->setGpsLoc($id);
+            } else {
+                $this->_playerService->addMessageToJournal($this->player, "неверно указана позиция");
+            }
+        }
+        $way = [];
+        if ($this->player->getCharOptions()->getGpsLoc() !== null) {
+            $way = $this->mapService->scan($this->player->getCharOptions()->getLocation(), $this->player->getCharOptions()->getGpsLoc())->getCloseList();
+        }
         $data = [];
         if ($learning == PlayerService::OPTION_ON) {
             $learning = $this->view->load("game/docs/" . $this->player->getPlayerOptions()->getLearningAction());
@@ -65,6 +80,7 @@ class GameController extends InGameController
         $data["map_data"] = $this->mapService->getMapData();
         $data["player_list"] = $this->_playerService->getRepository()->getPlayersByLocId($this->player->getCharOptions()->getLocation(), PlayerService::IN_TRAVEL);
         $data["area"] = $this->mapService->getArea($this->player->getCharOptions()->getLocation());
+        $data["way"] = $way;
         $this->render("game/travel", $data);
     }
 
@@ -144,6 +160,10 @@ class GameController extends InGameController
                     }
                 }
                 $this->player->getCharOptions()->setLocation($locId);
+                if(!is_null($this->player->getCharOptions()->getGpsLoc()) and $this->player->getCharOptions()->getGpsLoc() == $this->player->getCharOptions()->getLocation()){
+                    $this->player->getCharOptions()->setGpsLoc(null);
+                    $this->_playerService->addMessageToJournal($this->player, "вы прибыли к месту назначения");
+                }
                 $newPlayerList = $this->_playerService->getRepository()->getPlayersByLocId($this->player->getCharOptions()->getLocation(), PlayerService::IN_TRAVEL);
                 foreach ($newPlayerList as $newPlayer) {
                     if ($newPlayer->getId() != $this->player->getId()) {
@@ -159,6 +179,8 @@ class GameController extends InGameController
             }
             //$this->_playerService->addMessageToJournal($this->player, "Тестовое сообщение");
             $this->before();
+        } else {
+            $this->_playerService->addMessageToJournal($this->player, "некуда идти");
         }
         //$this->redirect($this->generateUrl("game_main"));
         $this->inTravel();

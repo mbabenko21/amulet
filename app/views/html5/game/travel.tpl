@@ -2,7 +2,7 @@
 
 {block "header_content"}
     <div class="upper">
-        поз:{$pos.x}/{$pos.y}, {$area.name}
+        поз: {$pos.y}/{$pos.x}, {$area.name}
     </div>
 {/block}
 
@@ -45,17 +45,32 @@
     {*игроки*}
     {include "game/layout/player_list.tpl" player_list=$player_list}
     {if isset($doors.nord)}
-        <a class="upper button button-black"
+        <a class="upper button button-small
+        {if isset($way[$doors.nord.locId])}
+            button-success
+            {else}
+            button-black
+        {/if}"
            href="{route id="game.move_char" params="locId:{$doors.nord.locId}"}">с &DoubleUpArrow;</a>
         <br/>
     {/if}
     {if isset($doors.west) or isset($doors.east)}
         {if isset($doors.west)}
-        <a class="upper button button-black"
+        <a class="upper button button-small
+        {if isset($way[$doors.west.locId])}
+            button-success
+            {else}
+            button-black
+        {/if}"
            href="{route id="game.move_char" params="locId:{$doors.west.locId}"}">&DoubleLeftArrow; з</a>
         {/if}
         {if isset($doors.east)}
-            <a class="upper button button-black"
+            <a class="upper button button-small
+            {if isset($way[$doors.east.locId])}
+            button-success
+            {else}
+            button-black
+        {/if}"
                href="{route id="game.move_char" params="locId:{$doors.east.locId}"}">в &DoubleRightArrow;</a>
             <br/>
             {else}
@@ -63,10 +78,24 @@
         {/if}
     {/if}
     {if isset($doors.south)}
-        <a class="upper button button-black"
+        <a class="upper button button-small
+        {if isset($way[$doors.south.locId])}
+            button-success
+            {else}
+            button-black
+        {/if}"
            href="{route id="game.move_char" params="locId:{$doors.south.locId}"}">ю &DoubleDownArrow;</a>
         <br/>
     {/if}
+    <div class="hidden" id="player-gpc-menu">
+        <form action="{route id="game_main"}" id="form-gps" method="post">
+            <input type="text" name="gps[x]" placeholder="X" class="small-input"/>
+            <input type="text" name="gps[y]" placeholder="Y" class="small-input"/>
+            <br/>
+            <a class="button button-small button-warning" href="#" onclick="document.getElementById('form-gps').submit(); return false;">задать</a>
+        </form>
+    </div>
+    <a href="#" id="player-gpc-menu-link" onclick="playerMenuInit('gpc'); replaceGpsLinkText();">поиск пути</a>
     {*{foreach from=$doors key=id item=door}
         *}{*{$door.locId} - {$door.name}*}{*
         <a class="button button-black"

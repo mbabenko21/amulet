@@ -501,4 +501,35 @@ class CharOptions
     {
         return $this->last_energy_regen_time;
     }
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gps_loc", type="string", nullable=true)
+     */
+    private $gps_loc;
+
+
+    /**
+     * Set gps_loc
+     *
+     * @param string $gpsLoc
+     *
+     * @return CharOptions
+     */
+    public function setGpsLoc($gpsLoc)
+    {
+        $this->gps_loc = $gpsLoc;
+    
+        return $this;
+    }
+
+    /**
+     * Get gps_loc
+     *
+     * @return string 
+     */
+    public function getGpsLoc()
+    {
+        return $this->gps_loc;
+    }
 }

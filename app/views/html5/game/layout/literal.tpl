@@ -2,7 +2,7 @@
     <script type="text/javascript">
         <!--
         function showMenu(id) {
-            var menus = document.getElementById('game-player-list').getElementsByClassName('player-menu');
+            var menus = document.getElementsByClassName('player-menu');
             for (var i = 0; i < menus.length; i++) {
                 menus[i].classList.add("hidden");
             }
@@ -50,6 +50,15 @@
             } else {
                 menu.classList.add('hidden');
                 document.getElementById('object-menu-link-' + id).innerHTML = "?";
+            }
+        }
+
+        function replaceGpsLinkText()
+        {
+            if(document.getElementById('player-gpc-menu').classList.contains('hidden')){
+                document.getElementById('player-gpc-menu-link').innerHTML = "поиск пути";
+            } else {
+                document.getElementById('player-gpc-menu-link').innerHTML = "скрыть ^";
             }
         }
         // -->

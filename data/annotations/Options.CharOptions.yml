@@ -58,4 +58,7 @@ Amulet\Entity\Options\CharOptions:
     last_energy_regen_time:
       type: integer
       nullable: true
+    gps_loc:
+      type: string
+      nullable: true
 

@@ -439,4 +439,66 @@ class CharOptions
     {
         return $this->town_location;
     }
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="last_life_regen_time", type="integer", nullable=true)
+     */
+    private $last_life_regen_time;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="last_energy_regen_time", type="integer", nullable=true)
+     */
+    private $last_energy_regen_time;
+
+
+    /**
+     * Set last_life_regen_time
+     *
+     * @param integer $lastLifeRegenTime
+     *
+     * @return CharOptions
+     */
+    public function setLastLifeRegenTime($lastLifeRegenTime)
+    {
+        $this->last_life_regen_time = $lastLifeRegenTime;
+    
+        return $this;
+    }
+
+    /**
+     * Get last_life_regen_time
+     *
+     * @return integer 
+     */
+    public function getLastLifeRegenTime()
+    {
+        return $this->last_life_regen_time;
+    }
+
+    /**
+     * Set last_energy_regen_time
+     *
+     * @param integer $lastEnergyRegenTime
+     *
+     * @return CharOptions
+     */
+    public function setLastEnergyRegenTime($lastEnergyRegenTime)
+    {
+        $this->last_energy_regen_time = $lastEnergyRegenTime;
+    
+        return $this;
+    }
+
+    /**
+     * Get last_energy_regen_time
+     *
+     * @return integer 
+     */
+    public function getLastEnergyRegenTime()
+    {
+        return $this->last_energy_regen_time;
+    }
 }

@@ -9,6 +9,7 @@ namespace Amulet\Controllers;
 
 
 use Amulet\Entity\Player;
+use Amulet\Service\AStarService;
 use Amulet\Service\MapService;
 use Amulet\Service\PlayerService;
 
@@ -16,7 +17,7 @@ class InGameController extends AutentificatedController
 {
     /** @var  Player */
     protected $player;
-    /** @var  MapService */
+    /** @var  MapService|AStarService */
     protected $mapService;
     /** @var  PlayerService */
     protected $_playerService;
