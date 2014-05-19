@@ -9,11 +9,23 @@ namespace Amulet\Service;
 
 
 use Amulet\Entity\Account;
+use Doctrine\Common\Persistence\ObjectRepository;
 
-interface AccountRepository {
+interface AccountRepository extends ObjectRepository {
     /**
-     * @param string $email
+     * Поиск аккаунта
+     * @param string $username
      * @return Account
      */
-    public function findByEmail($email);
+    public function findByUsername($username);
+
+    /**
+     * @param string $token
+     * @return Account
+     */
+    public function findByToken($token);
+    /**
+     * @return \ArrayIterator
+     */
+    public function getGameMasters();
 } 

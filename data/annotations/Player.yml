@@ -1,0 +1,79 @@
+# Created by PhpStorm
+# File: Player
+# Author: Maks Babenko <mbabenko21@gmail.com>
+# Date: 12.05.14 - 13:45
+#
+
+Amulet\Entity\Player:
+  type: entity
+  table: players
+  repositoryClass: Amulet\Repository\PlayerRepositoryImpl
+  id:
+      id:
+        type: integer
+        generator:
+          strategy: AUTO
+  fields:
+    title:
+      type: string
+      length: 10
+      unique: true
+    sex:
+      type: string
+      length: 1
+      initialValue: m
+    charClass:
+      name: class
+      type: integer
+      length: 2
+    charSide:
+      name: side
+      type: integer
+      length: 1
+    create_time:
+      type: integer
+      nullable: true
+
+  manyToOne:
+    account:
+      targetEntity: Amulet\Entity\Account
+      onUpdate: "cascade"
+      cascade: ["persist", "merge"]
+
+  oneToOne:
+    player_options:
+        targetEntity: Amulet\Entity\Options\PlayerOptions
+        joinColumn:
+          name: player_options_id
+          referencedColumnName: id
+          onDelete: "CASCADE"
+          cascade: ["remove", "persit"]
+    base_stats:
+        targetEntity: Amulet\Entity\Options\BaseStats
+        joinColumn:
+          name: base_stats_id
+          onDelete: "CASCADE"
+          referencedColumnName: id
+          cascade: ["remove", "persist"]
+    war_stats:
+        targetEntity: Amulet\Entity\Options\WarStats
+        joinColumn:
+          name: war_stats_id
+          onDelete: "CASCADE"
+          referencedColumnName: id
+          cascade: ["all"]
+    def_stats:
+        targetEntity: Amulet\Entity\Options\DefStats
+        joinColumn:
+          name: def_stats_id
+          onDelete: "CASCADE"
+          referencedColumnName: id
+          cascade: ["all"]
+    char_options:
+      targetEntity: Amulet\Entity\Options\CharOptions
+      joinColumn:
+        name: char_options_id
+        onDelete: "CASCADE"
+        referencedColumnName: id
+        cascade: ["all"]
+

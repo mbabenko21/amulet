@@ -1,0 +1,11 @@
+# Created by PhpStorm
+# File: uin
+# Author: Maks Babenko <mbabenko21@gmail.com>
+# Date: 16.05.14 - 14:30
+info:
+  name: "Привратник Уин"
+dialog:
+  begin:
+    reply: "Тест"
+    answers:
+      begin: "Тест"

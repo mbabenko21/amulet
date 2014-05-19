@@ -7,6 +7,7 @@ use Amulet\Factory\Config\DoctrineConfig;
 use Amulet\Factory\ViewFactory;
 use Amulet\Helper\StrHelper;
 use Amulet\Loader\YAML\ConfigYamlLoader;
+use AmuletOfDragon\Controller\ErrorsController;
 use Doctrine\Common\Persistence\Mapping\Driver\FileDriver;
 use Doctrine\DBAL\Configuration;
 use Doctrine\ORM\EntityManager;
@@ -44,11 +45,18 @@ class App
         $this->container->set("config_loader", $configLoader);
         $view = ViewFactory::factory($configLoader->get("view")->getEngine());
         $this->container->set("view", $view);
+        $cryptoClass = $this->configFactory("crypt")->getFactory();
+        $this->container->set("cipher", new $cryptoClass($this->configFactory("crypt")->getKey()));
         $this->_database();
-        if($console == false)
+        $locator = $this->locators["res_locator"];
+        $loader = new \Symfony\Component\Routing\Loader\YamlFileLoader($locator);
+        $router = new Router($loader, "routes.yml");
+        $this->container->set("router", $router);
+        if($console === false)
         {
             $this->_routing();
         }
+        $this->container->get("entity_manager")->flush();
     }
 
     /**
@@ -114,10 +122,8 @@ class App
      */
     private function _routing()
     {
-        $locator = $this->locators["res_locator"];
-        $loader = new \Symfony\Component\Routing\Loader\YamlFileLoader($locator);
-        $router = new Router($loader, "routes.yml");
-        $this->container->set("router", $router);
+        /** @var $router Router */
+        $router = $this->get("router");
         $matchRequest = $router->matchRequest(Request::createFromGlobals());
         $controllerData = $matchRequest["_controller"];
         $controller = StrHelper::parseClassAction($controllerData);
@@ -136,7 +142,13 @@ class App
                     [$controller, $methodName],
                     $matchRequest
                 );
+            } else {
+                $controller = new ErrorsController();
+                $controller->error404Action();
             }
+        } else {
+            $controller = new ErrorsController();
+            $controller->error404Action();
         }
         return $this;
     }

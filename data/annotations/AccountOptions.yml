@@ -1,0 +1,29 @@
+# Created by PhpStorm
+# File: AccountSettings
+# Author: Maks Babenko <mbabenko21@gmail.com>
+# Date: 14.05.14 - 11:07
+
+Amulet\Entity\AccountOptions:
+  type: entity
+  table: accounts_options
+  id:
+      id:
+        type: integer
+        generator:
+          strategy: AUTO
+  fields:
+      name:
+        type: string
+        length: 50
+        nullable: true
+      role:
+        type: integer
+        lenght: 1
+
+  oneToOne:
+      account:
+        targetEntity: Amulet\Entity\Account
+        joinColumn:
+          name: account_id
+          referencedColumnName: id
+          cascade: ["persist", "merge", "delete"]

@@ -13,7 +13,7 @@ use Amulet\Factory\Config\SmartyConfig;
 use Amulet\Factory\Config\ViewConfig;
 use Amulet\Service\ViewService;
 
-class SmartyView extends \Smarty implements ViewService {
+class SmartyView extends \SmartyBC implements ViewService {
     public function __construct()
     {
         parent::__construct();
@@ -27,7 +27,9 @@ class SmartyView extends \Smarty implements ViewService {
         $this->setConfigDir($config->getConfigDir());
         $this->setCacheDir($config->getCacheDir());
 
-        $this->caching = \Smarty::CACHING_LIFETIME_CURRENT;
+        $this->caching = \Smarty::CACHING_OFF;
+
+        $this->_registerAppFunctions();
 
         $this->assign("system_config", App::init()->configFactory("system"));
     }
@@ -45,5 +47,26 @@ class SmartyView extends \Smarty implements ViewService {
         $views = $this->getTemplateDir();
         $this->assign($data);
         $this->display($template);
+    }
+
+    /**
+     * @param null|string $template
+     * @param array $data
+     * @return string
+     */
+    public function load($template, $data = [])
+    {
+        /** @var ViewConfig $viewConfig */
+        $viewConfig = App::init()->configFactory("view");
+        $template = implode("", [$template, $viewConfig->getExt()]);
+        return $this->fetch($template, $data);
+    }
+
+    /**
+     * Функции шаблонизатора
+     */
+    private function _registerAppFunctions()
+    {
+        $this->register_function("route", array("Amulet\\Helper\\SmartyHelper", "generateUrl"));
     }
 }

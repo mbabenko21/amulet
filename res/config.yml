@@ -3,20 +3,29 @@
 # Author: Maks Babenko <mbabenko21@gmail.com>
 # Date: 08.05.14 - 13:18
 system:
-  version: "0.0.1-dev"
+  version: "0.0.1-alpha"
   author: "Maks Babenko <mbabenko21@gmail.com>"
   app_name: "Амулет дракона 2"
+  cookie_name: "Amulet_Of_Dragon2"
   env: "development"
+  max_players_to_account: 5
 
 game:
   items_per_page: 5
   life_per_second: 2
   mana_per_second: 2
+  start_loc: amulet.92.28
+  journal_message_save_time: 10
+  time_online: 300000
 
 view:
   engine: "smarty"
   type: "html5" #html5|xhtml
   ext: ".tpl"
+
+crypt:
+  factory: "Amulet\Factory\Crypt\Cipher"
+  key: "AmuletOfDragonDevTeam"
 
 doctrine:
   factory: "sqlite"

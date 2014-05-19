@@ -1,3 +1,6 @@
+@import "checkboxes.css";
+@import "sprites/classes.css";
+@import "links.css";
 html, body {
     height: 100%
 }
@@ -18,33 +21,33 @@ body {
 }
 
 a {
-    color: #409fde;
+    color: #3a8ac3;
     text-decoration: none
-}
-
-a:hover {
-    text-decoration: underline
 }
 
 .container {
     position: relative;
-    width: 50%;
     margin: 0 auto;
     height: 100%;
     min-height: 100%;
 }
 
-.header {
+.header, .footer {
     background-color: #e1e6ec;
-    height: 70px;
     width: 100%;
     display: block;
     overflow: hidden;
 }
 
-.header > .h3 {
-    margin: 16px;
+.bold {
+    font-weight: bold;
 }
+
+.footer {
+    height: 100px;
+}
+
+
 
 .container > .header {
     text-align: center;
@@ -54,5 +57,217 @@ a:hover {
 
 .container > .content {
     margin: 0 auto -37px;
-    margin-left: 70px;
+    text-align: center;
 }
+
+.field_input {
+    margin: 0;
+    background-color: white;
+    font-size: 14px;
+    color: #6a7477;
+    line-height: 16px;
+    height: 34px;
+    overflow: hidden;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-indent: 10px;
+    border: 1px solid white;
+    padding-right: 30px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+.green {
+    color: #4abfb4;
+}
+
+.red {
+   color: #fd5559;
+}
+
+
+.breaker > hr{
+    height: 3px;
+    width: 240px;
+    border: 2px solid #000000;
+    color: #000;
+    background-color: #eee;
+}
+
+.upper {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.lower {
+    text-transform: lowercase;
+}
+
+.upper > ul {
+    list-style: none;
+}
+
+.errors {
+    color: #fd5559;
+}
+
+.wrapper {
+    background-color: white;
+}
+
+.player {
+    position: relative;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 5px;
+    width: 250px;
+}
+
+.player-side-1 {
+    background-color: #0084bf;
+}
+
+.player-side-2 {
+    background-color: #ac0b05;
+}
+
+.player a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.player > .class-icon {
+    float: left;
+}
+
+.player > .player-info {
+    float: left;
+    padding-left: 10px;
+    text-align: left;
+}
+
+.player > .in-game {
+    float: right;
+    vertical-align: middle;
+}
+
+.in-game a {
+    display: block;
+}
+
+.player-info > span {
+    display: block;
+}
+
+.errors,
+.list,
+.player-list li {
+    list-style: none;
+}
+
+.list {
+    margin-right: 40px;
+}
+
+.upper > .list a {
+    text-align: left;
+}
+
+.learn {
+    font-size: 12px;
+}
+
+.journal {
+    font-size: 12px;
+}
+
+.journal > .journal_message {
+    display: block;
+}
+/*.player {
+    cursor: pointer;
+}*/
+.progressbar {
+    border-radius: 13px; /* (height of inner div) / 2 + padding */
+    padding: 1px;
+    background-color: #eee;
+    border: 1px solid #000000;
+}
+
+.progressbar > .player-wrap {
+    text-align: left;
+    height: 5px;
+    border-radius: 10px;
+
+    background-color: #fd5559;
+}
+
+.progressbar > .text {
+    float: left;
+    z-index: 1000;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.progressbar > .player-bar-wrap {
+    border-radius: 10px;
+    height: 16px;
+}
+
+.player-wrap-life {
+    height: 12px;
+    background-color: #fd5559;
+}
+
+.player-wrap-mana {
+    height: 12px;
+    background-color: #0084bf;
+}
+
+.player-wrap-rage {
+    height: 12px;
+    background-color: crimson;
+}
+
+.player-wrap-energy {
+    height: 12px;
+    background-color: #f0c040;
+}
+
+.player-title {
+    margin: 0 auto;
+    text-align: left;
+    font-weight: bold;
+    color: #000;
+    float: left;
+}
+
+.left {
+    text-align: left;
+}
+
+.town-doors a {
+    font-size: 18px;
+    padding: 2px;
+}
+
+.center {
+    text-align: center;
+}
+
+.normal {font-weight: normal;}
+.bold {font-weight: bold;}
+
+.large-font {font-size: large}
+.small-font {font-size: small}
+
+
+.player-menu {
+    margin-top: -20px;
+}
+

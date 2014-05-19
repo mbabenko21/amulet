@@ -9,13 +9,14 @@ namespace AmuletOfDragon\Controller;
 
 
 use Amulet\Controller;
+use Amulet\Controllers\InGameController;
 
 /**
  *
  * Class HomeController
  * @package AmuletOfDragon\Controller
  */
-class HomeController extends Controller {
+class HomeController extends InGameController {
 
     public function indexAction()
     {

@@ -3,4 +3,25 @@
 # Author: Maks Babenko <mbabenko21@gmail.com>
 # Date: 08.05.14 - 13:18
 services:
-  test: "Teste"
+  account_service:
+    class: Amulet\Service\AccountServiceImpl
+    calls:
+      - [setEm, ["@entity_manager"]]
+      - [setCrypt, ["@cipher"]]
+
+  auth_service:
+    class: Amulet\Service\AuthServiceImpl
+    calls:
+      - [setAccountService, ["@account_service"]]
+      - [setCrypto, ["@cipher"]]
+
+  player_service:
+    class: Amulet\Service\PlayerServiceImpl
+    calls:
+      - [setEm, ["@entity_manager"]]
+
+  map_service:
+    class: Amulet\Service\MapServiceImpl
+
+  town_service:
+      class: Amulet\Service\TownServiceImpl

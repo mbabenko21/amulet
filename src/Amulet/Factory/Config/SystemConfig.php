@@ -16,6 +16,8 @@ namespace Amulet\Factory\Config;
  * @property string author
  * @property string version
  * @property string env
+ * @property string cookie_name
+ * @property int max_players_to_account
  */
 class SystemConfig extends AbstractConfig {
 
@@ -49,5 +51,21 @@ class SystemConfig extends AbstractConfig {
     public function getEnv()
     {
         return $this->env;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCookieName()
+    {
+        return $this->cookie_name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMaxPlayersToAccount()
+    {
+        return $this->max_players_to_account;
     }
 }

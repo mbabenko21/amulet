@@ -1,0 +1,61 @@
+# Created by PhpStorm
+# File: Player
+# Author: Maks Babenko <mbabenko21@gmail.com>
+# Date: 12.05.14 - 13:45
+#
+
+Amulet\Entity\Options\CharOptions:
+  type: entity
+  table: char_options
+  id:
+      id:
+        type: integer
+        generator:
+          strategy: AUTO
+  fields:
+    life:
+      type: integer
+      nullable: true
+    max_life:
+      type: integer
+      nullable: true
+    energy:
+      type: integer
+      nullable: true
+    max_energy:
+      type: integer
+      nullable: true
+    level:
+      type: integer
+      nullable: true
+    experience:
+      type: integer
+      nullable: true
+    need_experience:
+      type: integer
+      nullable: true
+    is_ghost:
+      type: integer
+      nullable: true
+    location:
+      type: string
+      nullable: true
+    last_action:
+      type: integer
+      nullable: true
+    timers:
+      type: json_array
+      nullable: true
+    journal:
+      type: array
+      nullable: true
+    town_location:
+      type: string
+      nullable: true
+    last_life_regen_time:
+      type: integer
+      nullable: true
+    last_energy_regen_time:
+      type: integer
+      nullable: true
+

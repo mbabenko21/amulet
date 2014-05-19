@@ -6,6 +6,7 @@
 Amulet\Entity\Account:
   type: entity
   table: accounts
+  repositoryClass: Amulet\Repository\AccountRepositoryImpl
   id:
       id:
         type: integer
@@ -15,6 +16,37 @@ Amulet\Entity\Account:
       username:
         type: string
         length: 50
+        unique: true
       password:
         type: string
         length: 50
+      cookid:
+        type: string
+        length: 50
+        nullable: true
+        unique: true
+      role:
+        type: integer
+        lenght: 1
+
+  oneToMany:
+      players:
+        targetEntity: Amulet\Entity\Player
+        mappedBy: account
+        cascade: ["all"]
+
+  oneToOne:
+      currentPlayer:
+        targetEntity: Amulet\Entity\Player
+        joinColumn:
+          name: current_player_id
+          onDelete: "SET NULL"
+          referencedColumnName: id
+          cascade: ["all"]
+      options:
+        targetEntity: Amulet\Entity\AccountOptions
+        joinColumn:
+          name: options_id
+          onDelete: "CASCADE"
+          referencedColumnName: id
+          cascade: ["all"]

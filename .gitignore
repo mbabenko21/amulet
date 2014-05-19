@@ -1,3 +1,5 @@
 vendor/*
 .idea/*
 *.lock
+*tpl.php
+*cache.php

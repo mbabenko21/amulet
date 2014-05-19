@@ -1,0 +1,36 @@
+{
+    "name": "Лайкдимион",
+    "guard": 1,
+    "id": "likedimion",
+    "close_phrase": "покинуть столицу",
+    "gates": "Вы находитесь у выхода из столицы",
+    "town_exits": {
+        "begin": "amulet.92.28"
+    },
+    "map": {
+        "begin": "Возле ворот#к дому лекаря:healer",
+        "healer": "Возле дома лекаря#к выходу:begin,к академии:academy_hall,центральная площадь:central_square,к восточным воротам:east_gate",
+        "central_square": "Центральная площадь#к академии:academy_hall,к дому лекаря:healer"
+    },
+    "static_objects": {
+        "likedimion.begin": [
+            {
+                "name": "статуя элона",
+                "info": "Огромная статуя создателя города."
+            }
+        ]
+    },
+    "dialogs": {
+        "likedimion.begin": [
+            {
+                "name": "Яков",
+                "sub_name": "стражник",
+                "info": "Молодой парень, лет двадцати. Одет в сверкающае доспехи",
+                "on_use": {
+                    "route": "game.dialog.open",
+                    "params": "dialogId:guard"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,34 @@
+# Created by PhpStorm
+# File: Options.PlayerStats
+# Author: Maks Babenko <mbabenko21@gmail.com>
+# Date: 16.05.14 - 19:39
+Amulet\Entity\Options\WarStats:
+  type: entity
+  table: war_stats
+  id:
+      id:
+        type: integer
+        generator:
+          strategy: AUTO
+  fields:
+      attack:
+        type: integer
+        nullable: true
+      accuracy:
+        type: integer
+        nullable: true
+      crit_rate:
+        type: integer
+        nullable: true
+      attack_speed:
+        type: integer
+        nullable: true
+      magic_boost:
+        type: integer
+        nullable: true
+      magic_accuracy:
+        type: integer
+        nullable: true
+      speed:
+        type: integer
+        nullable: true

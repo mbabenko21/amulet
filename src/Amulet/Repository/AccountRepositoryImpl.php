@@ -17,7 +17,7 @@ class AccountRepositoryImpl extends AmuletRepository implements AccountRepositor
      * @param string $email
      * @return Account
      */
-    public function findByEmail($email)
+    public function findByUsername($email)
     {
         $criteria = [
             "username" => $email
@@ -25,5 +25,36 @@ class AccountRepositoryImpl extends AmuletRepository implements AccountRepositor
         $account = $this->findOneBy($criteria);
         $eq = $this->equals($account, "Amulet\\Entity\\Account", true);
         return $account;
+    }
+
+    /**
+     * @return \ArrayIterator
+     */
+    public function getGameMasters()
+    {
+        return new \ArrayIterator();
+    }
+
+    /**
+     * @param string $token
+     * @return Account
+     */
+    public function findByToken($token)
+    {
+        $criteria = [
+            "cookid" => $token
+        ];
+        $account = $this->findOneBy($criteria);
+        $this->_isAccount($account);
+        return $account;
+    }
+
+    /**
+     * @param $account
+     * @return bool
+     */
+    private function _isAccount($account)
+    {
+        return $this->equals($account, "Amulet\\Entity\\Account", true);
     }
 }

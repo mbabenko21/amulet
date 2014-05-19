@@ -8,13 +8,158 @@ home:
   defaults: { _controller: "AmuletOfDragon\\Controller\\HomeController::indexAction" }
 
 login:
-  path: "/login{ext}"
-  defaults: { _controller: "AmuletOfDragon\\Controller\\AuthController::loginAction", ext: ".html"}
+  path: "/login.{ext}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\AuthController::loginAction"}
   requirements:
-    ext: ".html|.php"
+    ext: "html|php"
+
+registration:
+  path: "/registration.{ext}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\AuthController::registrationAction"}
+  requirements:
+      ext: "html|php"
+
+logout:
+  path: "/logout"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\AuthController::logoutAction"}
+
+cabinet:
+  path: "/cabinet.{ext}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\CabinetController::indexAction", ext: "html"}
+  requirements:
+     ext: "html|php"
+
+account_settings:
+  path: "/cabinet/settings.{ext}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\CabinetController::indexAction"}
+  requirements:
+       ext: "html|php"
+
+new_player:
+  path: "/cabinet/create-player.{ext}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\CabinetController::createPlayerAction"}
+  requirements:
+       ext: "html|php"
+
+connect_game:
+  path: "/game/connect/player{playerId}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\CabinetController::connectAction"}
+  requirements:
+    playerId:  \d+
+
+cb_remove_char:
+  path: "/cabinet/remove/player{playerId}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\CabinetController::removePlayerAction"}
+  requirements:
+      playerId:  \d+
+
+game_main:
+  path: "/game.{ext}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\GameController::indexAction", ext: "html"}
+  requirements:
+         ext: "html|php"
+
+game_disconnect:
+  path: "/game/disconnect"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\GameController::disconnectAction"}
+
+game_character_menu:
+  path: "/character.{ext}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\CharacterController::mainMenuAction", ext: "html"}
+  requirements:
+           ext: "html|php"
+
+game.char_params:
+  path: "/character/info/params.{ext}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\CharacterController::charParamsAction", ext: "html"}
+  requirements:
+       ext: "html|php"
+
+game.char_talants:
+  path: "/character/info/talants.{ext}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\CharacterController::charTalantsAction", ext: "html"}
+  requirements:
+         ext: "html|php"
+
+game.about_me:
+  path: "/character/info.{ext}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\CharacterController::charInfoAction", ext: "html"}
+  requirements:
+         ext: "html|php"
+
+game.char_settings:
+  path: "/character/settings.{ext}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\CharacterController::charSettingsAction", ext: "html"}
+  requirements:
+         ext: "html|php"
+
+game.move_char:
+  path: "/game/move/loc-{locId}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\GameController::moveCharAction"}
+  requirements:
+         locId: "(\w)+\.(\d)+\.(\d)+"
+
+game.town_move_char:
+  path: "/game/go/loc-{locId}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\GameController::moveInTownAction"}
+  requirements:
+         locId: "(\w)+.(.*)+"
+
+
+game.map:
+  path: "/game/map"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\GameController::mapAction"}
+
+
+game.settings.display_map:
+  path: "/settings/display/map/{option}/{redirect}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\SettingsController::displayMapAction", option: "1", redirect: "game_main"}
+  requirements:
+    option: "1|0"
+    redirect: "\w"
+
+game.settings.display_learning:
+  path: "/settings/display/learning/{option}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\SettingsController::displayLearningAction", option: "1", redirect: "game_main"}
+  requirements:
+      option: "1|0"
+
+game.use.town_gates:
+  path: "/game/use/gates-{tid}-{action}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\UseController::useTownGatesAction", action: "open"}
+  requirements:
+        tid: "\w+"
+        action: "open|close"
+
+
+game.use.static:
+  path: "/game/use/static/{oid}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\UseController::useStaticAction"}
+  requirements:
+      oid: "\w+"
+
+game.dialog.open:
+  path: "/game/dialog/{dialogId}.{section}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\DialogController::sectionAction", section: "begin"}
+  requirements:
+      dialogId: "\w+"
+      section: "\w+"
+
+game.info:
+  path: "/game/info/{factory}:{id}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\InfoController::factoryAction"}
+  requirements:
+        factory: "\w+"
+        id: \d+
+
+game.attack:
+  path: "/game/attack/{factory}{id}"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\Game\\AttackController::factoryAction"}
+  requirements:
+        factory: "\w+"
+        id: "\d+"
+
 
 test_action:
-  path: "/user/{id}"
-  defaults: { _controller: "AmuletOfDragon\\Controller\\HomeController::testAction"}
-  requirements:
-    ext: ".html|.php"
+  path: "/create_test_account"
+  defaults: { _controller: "AmuletOfDragon\\Controller\\AuthController::createTestAccountAction"}

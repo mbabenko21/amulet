@@ -1,0 +1,8 @@
+# Created by PhpStorm
+# File: items.collection
+# Author: Maks Babenko <mbabenko21@gmail.com>
+# Date: 12.05.14 - 10:48
+
+misc.money:
+  name: монеты
+  info: ""

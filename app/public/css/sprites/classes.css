@@ -1,0 +1,34 @@
+.__class1-icon {
+    display: block;
+    background: url("/public/img/sprites/Fighter.gif") 0 0 no-repeat;
+}
+
+.__class2-icon {
+    display: block;
+    background: url("/public/img/sprites/Wizard.gif") 0 0 no-repeat;
+}
+
+.__class3-icon {
+    display: block;
+    background: url("/public/img/sprites/Elf.gif") 0 0 no-repeat;
+}
+
+ .base1 {
+    width: 52px;
+    height: 70px;
+    background-position: -110px -138px;
+}
+
+
+
+ .base2 {
+    width: 45px;
+    height: 70px;
+    background-position: -320px -138px;
+}
+
+ .base3 {
+     width: 52px;
+     height: 70px;
+     background-position: -318px -110px;
+ }

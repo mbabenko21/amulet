@@ -1,0 +1,43 @@
+# Created by PhpStorm
+# File: Options.PlayerStats
+# Author: Maks Babenko <mbabenko21@gmail.com>
+# Date: 16.05.14 - 19:39
+Amulet\Entity\Options\BaseStats:
+  type: entity
+  table: base_stats
+  id:
+      id:
+        type: integer
+        generator:
+          strategy: AUTO
+  fields:
+      strenge:
+        type: integer
+        nullable: true
+      dexterity:
+        type: integer
+        nullable: true
+      intellegence:
+        type: integer
+        nullable: true
+      agility:
+        type: integer
+        nullable: true
+      will:
+        type: integer
+        nullable: true
+      health:
+        type: integer
+        nullable: true
+      hit_points:
+        type: integer
+        nullable: true
+      mana_points:
+        type: integer
+        nullable: true
+      rage_points:
+        type: integer
+        nullable: true
+      energy_points:
+        type: integer
+        nullable: true

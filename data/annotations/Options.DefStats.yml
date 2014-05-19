@@ -1,0 +1,40 @@
+# Created by PhpStorm
+# File: Options.PlayerStats
+# Author: Maks Babenko <mbabenko21@gmail.com>
+# Date: 16.05.14 - 19:39
+Amulet\Entity\Options\DefStats:
+  type: entity
+  table: def_stats
+  id:
+      id:
+        type: integer
+        generator:
+          strategy: AUTO
+  fields:
+      phys_def:
+        type: integer
+        nullable: true
+      mag_def:
+        type: integer
+        nullable: true
+      block:
+        type: integer
+        nullable: true
+      parring:
+        type: integer
+        nullable: true
+      evasion:
+        type: integer
+        nullable: true
+      fire_resistance:
+        type: integer
+        nullable: true
+      wind_resistance:
+        type: integer
+        nullable: true
+      water_resistance:
+        type: integer
+        nullable: true
+      earth_resistance:
+        type: integer
+        nullable: true

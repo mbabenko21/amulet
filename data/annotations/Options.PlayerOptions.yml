@@ -1,0 +1,39 @@
+# Created by PhpStorm
+# File: PlayerOptions
+# Author: Maks Babenko <mbabenko21@gmail.com>
+# Date: 14.05.14 - 19:06
+
+Amulet\Entity\Options\PlayerOptions:
+  type: entity
+  table: players_options
+  id:
+      id:
+        type: integer
+        generator:
+          strategy: AUTO
+  fields:
+      learning:
+        type: integer
+        length: 1
+      learning_action:
+        type: string
+      start_page:
+        type: string
+      display_map:
+        type: integer
+        length: 1
+        nullable: true
+      dialog_id:
+        type: string
+        nullable: true
+      display_journal:
+        type: integer
+        nullable: true
+
+  oneToOne:
+      player:
+        targetEntity: Amulet\Entity\Player
+        joinColumn:
+          name: player_id
+          referencedColumnName: id
+          cascade: ["persist", "merge", "delete"]

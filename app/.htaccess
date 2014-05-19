@@ -7,7 +7,7 @@
     RewriteRule ^index.php - [L]
 
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond $1 !\.(js|ico|gif|jpg|png|css|html|swf|mp3|wav|txt)$
+    RewriteCond $1 !\.(js|ico|gif|jpg|png|css|swf|mp3|wav|txt)$
     # Change below before deploying to production
     #RewriteRule ^(.*)$ /app.php [QSA,L]
     RewriteRule ^(.*)$ /index.php [QSA,L]

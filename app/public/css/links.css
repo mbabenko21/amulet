@@ -1,0 +1,57 @@
+a:hover {
+    text-decoration: none;
+}
+a.non-underscore, a.non-underscore:hover {
+    text-decoration: none;
+}
+
+
+.button {
+    display: inline-block;
+    line-height: 30px;
+    height: 30px;
+    padding-right: 7px;
+    padding-left: 7px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    color: #000;
+    border: 3px solid #000;
+    margin-bottom: 5px;
+}
+
+.button-small {
+    height: 16px;
+    line-height: 16px;
+    font-size: 14px;
+}
+
+.button-cancel      {
+    color: #fd5559;
+    border: 3px solid #fd5559;
+}
+
+.button-warning {
+    color: #fd5559;
+    border: 3px solid #fd5559;
+}
+
+.button-success     {
+    color: #4abfb4;
+    border: 3px solid #4abfb4;
+}
+.button-info        {
+    color: #0084bf;
+    border: 3px solid #0084bf;
+}
+
+.button-black       {
+    color: #000;
+    border: 3px solid #000;
+}
+
